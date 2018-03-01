@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>cnode</title>
+		<link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7-dist/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="../css/cnode.css">
+		<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../js/session.js"></script>
+		<script type="text/javascript" src="../js/url.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$.nav();
+				$.msg();
+				// 获取用户详情
+				var lgname = $.Request('loginname');
+				var user = $.userDetail(lgname);
+				var tphtml = '';
+				var len = user.data.recent_topics.length;
+				rphtml = '<ul class="list-group"><li class="list-group-item reply-header">最近参与的话题</li>';
+				for (var i = 0; i < len; i++) {
+					rphtml += '<li class="list-group-item"><a href="topicdetail.html?id=' + user.data.recent_topics[i].id + '" class="title">' + user.data.recent_topics[i].title + '</a><span class="time">' + user.data.recent_topics[i].last_reply_at + '</span></li>'
+				}
+				rphtml += '</ul>';
+				$("#main-contain").append(rphtml);
+			})
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+						<a href="##" class="navbar-brand">node.js社区</a>
+					</div>
+					<ul class="nav navbar-nav header-nav main">
+						<li class="active"><a href="node.html">首页</a></li>
+						<li class="li-login"><a href="">登录</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-9" id="main-contain">
+			</div>
+		</div>
+	</div>
+</body>
+</html>

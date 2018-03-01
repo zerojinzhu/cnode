@@ -1,0 +1,2 @@
+1.该网站为重写的cnode网站，api都来自原cnode网站
+2.入口文件为index.html

@@ -1,0 +1,95 @@
+body{
+	background-color: #eeeeee;
+}
+.time,.btn-collect,.much{
+	float: right;
+}
+span.reply{
+	display: inline-block;
+	width: 50px;
+	text-align: center;
+}
+#content tbody tr:first-child td{
+	border:none;
+}
+.title{
+/*	display: inline-block;*/
+    max-width: 66%;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+#main-contain{
+	overflow: hidden;
+}
+#main-contain tbody{
+	background-color: white;
+}
+#main-contain tr p{
+	font-size:16px;
+}
+
+.user_avatar img ,img.media-object{
+	width: 40px;
+	height: 40px;
+}
+.user_avatar {
+	margin-right: 10px;
+}
+.reply-header{
+	background-color: #F5F5F5;
+	border-top-width:1px;
+}
+
+span.label{
+	margin-right: 10px;
+	display: inline-block;
+}
+
+textarea{
+	border: none;
+	width: 100%;
+	outline: none;
+	resize: none;	
+}
+
+.cen a{
+	width: 115px;
+    margin-top: 10px;
+}
+.help-block{
+	color: red;
+}
+td{
+	vertical-align: bottom;
+}
+
+span.publishtime,span.visit,.info{
+
+	color: #CDB962;
+	font-size: 12px;
+}
+span.publishtime,span.visit{
+	padding-right: 30px;	
+}
+.th,.replysb{
+	float: right;
+	margin-right: 10px;
+}
+
+a.replysb:hover{
+	text-decoration: none;
+}
+a.th:hover{
+	text-decoration: none;
+	color: black;
+}
+a.up{
+	color: black;
+}

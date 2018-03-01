@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>cnode</title>
+	<link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7-dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href ="../js/editor.md-master/css/editormd.css" />
+
+	<link rel="stylesheet" type="text/css" href="../css/cnode.css">
+
+	<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../js/session.js"></script>
+	<script type="text/javascript" src = "../js/editor.md-master/editormd.js"></script>
+	<script type="text/javascript" src="../js/url.js"></script>
+	<script type="text/javascript" src="../js/createtopic.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					<a href="##" class="navbar-brand">node.js社区</a>
+				</div>
+				<ul class="nav navbar-nav header-nav main">
+					<li class="active"><a href="node.html">首页</a></li>
+					<li class="li-login"><a href="">登录</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12" id="main-contain">
+			<ul class="list-group">
+				<li class="list-group-item reply-header">发布话题</li>
+				<li class="list-group-item">
+					<form role="form"  class="form-inline">
+						<input type="text" class="form-control" placeholder="标题字数10字以上">
+						<div class="dropdown" style="display: inline-block;">	
+							<button class="btn btn-default dropdown-toggle tab" type="button" id="dropdownMenu1" data-toggle="dropdown">选择版块<span class="caret"></span></button>
+							<ul class="dropdown-menu dropdown-menu-left" id="tab" role="menu" aria-labelledby="dropdownMenu1">
+								<li class="share" role="presentation"><a role="menuitem" tabindex="-1" href="#">分享</a></li>
+								<li class="ask" role="presentation"><a role="menuitem" tabindex="-1" href="#">问答</a></li>
+								<li class="job" role="presentation"><a role="menuitem" tabindex="-1" href="#">招聘</a></li>
+								<li class="dev" role="presentation"><a role="menuitem" tabindex="-1" href="#">客户端测试</a></li>
+							</ul>
+						</div>
+					</form>  
+				</li>
+				<li class="list-group-item">
+					<div class="editormd" id="test-editormd">
+						<textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc" id="editormd"></textarea>
+						<!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
+						<textarea class="editormd-html-textarea" name="editorhtml" id="editorhtml"></textarea>
+					</div>
+					<button class="btn btn-primary" id="btn-reply" type="button">发布</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>

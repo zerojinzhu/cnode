@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>cnode</title>
+		<link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7-dist/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href ="../js/editor.md-master/css/editormd.css" />
+		<link rel="stylesheet" type="text/css" href="../css/cnode.css">
+		<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../js/session.js"></script>
+		<script type="text/javascript" src = "../js/editor.md-master/editormd.js"></script>
+		<script type="text/javascript" src="../js/url.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$.nav();
+				$.msg();
+				$.md();
+				var lgsta = $.session.get('accesstoken');
+				var id = $.Request("id");
+				var reply_id = $.Request("replyid") || '';
+				
+				$("#btn-reply").click(function() {
+					if ($.login(lgsta) == null) {
+						alert("请先登录");
+						return;
+					}
+					var ct = $("#editormd").val();
+					if(ct==''){
+						alert("回复内容不能为空");
+						return;
+					}
+					var xhr = reply(lgsta, ct, reply_id, id);
+					if (xhr.success) {
+						window.location.href = '../html/topicdetail.html?id=' + id;
+					}
+				})
+					//对另一个评论的回复reply_id
+				function reply(accesstoken, content, reply_id, topic_id) {
+					var xhr = $.ajax({
+						url: "https://cnodejs.org/api/v1/topic/" + topic_id + "/replies",
+						type: "POST",
+						async: false,
+						data: {
+							accesstoken: accesstoken,
+							reply_id: reply_id,
+							content: content,
+						},
+					});
+					var result = JSON.parse(xhr.responseText);
+					return result;
+				}
+			})
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="navbar navbar-default" role="navigation">
+						<div class="navbar-header">
+							<a href="##" class="navbar-brand">node.js社区</a>
+						</div>
+						<ul class="nav navbar-nav header-nav main">
+							<li class="active"><a href="node.html">首页</a></li>
+							<li class="li-login"><a href="">登录</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12" id="main-contain">
+					<ul class="list-group">
+						<li class="list-group-item reply-header">回复话题</li>
+						<li class="list-group-item">
+							<div class="editormd" id="test-editormd">
+								<textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc" id="editormd"></textarea>
+								<!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
+								<textarea class="editormd-html-textarea" name="editorhtml" id="editorhtml"></textarea>
+							</div>
+							<button class="btn btn-primary" id="btn-reply" type="button">回复</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
